@@ -1,1 +1,3 @@
-#.emacs.d
+# .emacs.d
+
+My Emacs Configuration
