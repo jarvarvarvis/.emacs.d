@@ -79,6 +79,10 @@
 ; Programming languages + editor integration
 (use-package rust-mode)
 
+(use-package cmake-mode
+  :config
+  (require 'cmake-mode))
+
 (use-package editorconfig
   :config
   ; Enable editorconfig-mode (EditorConfig homepage: https://editorconfig.org/)
@@ -279,7 +283,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(doom-themes all-the-icons treemacs doom-modeline company company-box helm rust-mode editorconfig lsp-mode lsp-ui lsp-treemacs helm-lsp flycheck flycheck-rust hydra which-key projectile helm-xref)))
+   '(cmake-mode doom-themes all-the-icons treemacs doom-modeline company company-box helm rust-mode editorconfig lsp-mode lsp-ui lsp-treemacs helm-lsp flycheck flycheck-rust hydra which-key projectile helm-xref)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
