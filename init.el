@@ -79,9 +79,9 @@
 ; Programming languages + editor integration
 (use-package rust-mode)
 
-(use-package cmake-mode
-  :config
-  (require 'cmake-mode))
+(use-package haskell-mode)
+
+(use-package cmake-mode)
 
 (use-package editorconfig
   :config
@@ -97,6 +97,7 @@
   (c-mode . lsp)
   (rust-mode . lsp)
   (cmake-mode . lsp)
+  (haskell-mode . lsp)
   (lsp-mode . lsp-enable-which-key-integration)
 
   :config
@@ -224,6 +225,16 @@
 	  ("!=" . ?≠))))
 (add-hook 'rust-mode-hook #'rust-set-prettify-symbols-list)
 
+; Haskell
+(defun haskell-set-prettify-symbols-list ()
+  "Set the `prettify-symbols-alist'."
+  (setq prettify-symbols-alist
+	'(("=>" . ?⇒)
+	  ("->" . ?⟶)
+	  (">=" . ?⩾)
+	  ("<=" . ?⩽)
+	  ("!=" . ?≠))))
+
 ; C
 (defun c-set-prettify-symbols-list ()
   "Set the `prettify-symbols-alist'."
@@ -232,6 +243,8 @@
  	  ("<=" . ?⩽)
 	  ("!=" . ?≠))))
 (add-hook 'c-mode-hook #'c-set-prettify-symbols-list)
+
+
 
 ; Rebind C-x C-b to open ibuffer instead of buffer-list
 ; Use this for managing (closing etc.) buffers
@@ -283,7 +296,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(cmake-mode doom-themes all-the-icons treemacs doom-modeline company company-box helm rust-mode editorconfig lsp-mode lsp-ui lsp-treemacs helm-lsp flycheck flycheck-rust hydra which-key projectile helm-xref)))
+   '(haskell-mode cmake-mode doom-themes all-the-icons treemacs doom-modeline company company-box helm rust-mode editorconfig lsp-mode lsp-ui lsp-treemacs helm-lsp flycheck flycheck-rust hydra which-key projectile helm-xref)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
