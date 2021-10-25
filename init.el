@@ -237,6 +237,7 @@
 	  (">=" . ?⩾)
 	  ("<=" . ?⩽)
 	  ("!=" . ?≠))))
+(add-hook 'haskell-mode-hook #'haskell-set-prettify-symbols-list)
 
 ; C
 (defun c-set-prettify-symbols-list ()
