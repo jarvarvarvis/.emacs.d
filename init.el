@@ -150,6 +150,9 @@
 ; Disable the toolbar
 (tool-bar-mode -1)
 
+; Set visible-bell instead of an audible bell
+(setq visible-bell 1)
+
 
 ;;;;; Features ;;;;;
 
