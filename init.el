@@ -88,7 +88,7 @@
   ; Enable editorconfig-mode (EditorConfig homepage: https://editorconfig.org/)
   (editorconfig-mode t))
 
-; lsp-mode related packages
+; LSP
 (use-package lsp-mode
   :init
   (setq lsp-keymap-prefix "C-c l")
@@ -97,7 +97,6 @@
   (c-mode . lsp)
   (rust-mode . lsp)
   (cmake-mode . lsp)
-  (haskell-mode . lsp)
   (lsp-mode . lsp-enable-which-key-integration)
 
   :config
