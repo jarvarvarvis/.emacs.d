@@ -79,6 +79,11 @@
 ; Programming languages + editor integration
 (use-package rust-mode)
 
+(use-package haskell-mode
+  :hook
+  (haskell-mode . interactive-haskell-mode)
+  (haskell-mode . haskell-doc-mode))
+
 (use-package cmake-mode)
 
 (use-package editorconfig
@@ -203,50 +208,6 @@
 
 (add-hook 'rust-mode-hook #'rust-add-electric-pairs)
 
-; Enable global-prettify-symbols-mode (Compact multiple characters into one without altering the original text)
-(global-prettify-symbols-mode t)
-
-;; Add some more symbols to the prettify-symbols-alist
-; Emacs Lisp
-(defun elisp-set-prettify-symbols-list ()
-  "Set the `prettify-symbols-alist'."
-  (setq prettify-symbols-alist
-	'(("lambda" . ?λ))))
-(add-hook 'emacs-lisp-mode-hook #'elisp-set-prettify-symbols-list)
-
-; Rust
-(defun rust-set-prettify-symbols-list ()
-  "Set the `prettify-symbols-alist'."
-  (setq prettify-symbols-alist
-	'(("=>" . ?⇒)
-	  ("->" . ?⟶)
-	  (">=" . ?⩾)
-	  ("<=" . ?⩽)
-	  ("!=" . ?≠))))
-(add-hook 'rust-mode-hook #'rust-set-prettify-symbols-list)
-
-; Haskell
-(defun haskell-set-prettify-symbols-list ()
-  "Set the `prettify-symbols-alist'."
-  (setq prettify-symbols-alist
-	'(("=>" . ?⇒)
-	  ("->" . ?⟶)
-	  (">=" . ?⩾)
-	  ("<=" . ?⩽)
-	  ("!=" . ?≠))))
-(add-hook 'haskell-mode-hook #'haskell-set-prettify-symbols-list)
-
-; C
-(defun c-set-prettify-symbols-list ()
-  "Set the `prettify-symbols-alist'."
-  (setq prettify-symbols-alist
-	'((">=" . ?⩾)
- 	  ("<=" . ?⩽)
-	  ("!=" . ?≠))))
-(add-hook 'c-mode-hook #'c-set-prettify-symbols-list)
-
-
-
 ; Rebind C-x C-b to open ibuffer instead of buffer-list
 ; Use this for managing (closing etc.) buffers
 (global-set-key (kbd "C-x C-b") 'ibuffer)
@@ -297,7 +258,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(cmake-mode doom-themes all-the-icons treemacs doom-modeline company company-box helm rust-mode editorconfig lsp-mode lsp-ui lsp-treemacs helm-lsp flycheck flycheck-rust hydra which-key projectile helm-xref)))
+   '(haskell-mode cmake-mode doom-themes all-the-icons treemacs doom-modeline company company-box helm rust-mode editorconfig lsp-mode lsp-ui lsp-treemacs helm-lsp flycheck flycheck-rust hydra which-key projectile helm-xref)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
