@@ -164,6 +164,7 @@
 ; - shell-mode
 ; - term-mode
 ; - ansi-term-mode
+; - treemacs-mode
 (require 'display-line-numbers)
 
 ; Define some modes in which line numbers should not be displayed
@@ -213,8 +214,10 @@
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
 ; Some keybinds for controlling Emacs windows:
-; - resizing Emacs windows
-; - using ace-window (switch between, delete and swap windows)
+; - creating new windows
+; - resizing windows
+; - killing a window and associated buffer
+; - using ace-window (switching between, deleting and swapping windows)
 (defhydra hydra-window-control (global-map "C-c w")
   "window control"
   ("<left>" shrink-window-horizontally)
@@ -223,10 +226,12 @@
   ("<up>" enlarge-window)
   ("+" balance-windows)
   ("j" ace-window)                ; Jump
-  ("d" ace-delete-window)         ; Delete
+  ("d" ace-delete-window)         ; Delete a window (the buffer is kept)
+  ("k" kill-buffer-and-window)    ; Kill the current buffer and window
   ("s" ace-swap-window)           ; Swap
   ("v" split-window-vertically)   ; Vertical split
   ("h" split-window-horizontally) ; Horizontal split
+  ("t" treemacs)                  ; toggle Treemacs
 )
 
 ; Bind C-S-k to kill-whole-line (C-k kills a line starting from the point)
