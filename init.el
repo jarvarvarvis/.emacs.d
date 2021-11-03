@@ -168,7 +168,7 @@
 
 ; Define some modes in which line numbers should not be displayed
 (defcustom display-line-numbers-exempt-modes
-  '(shell-mode term-mode ansi-term-mode)
+  '(shell-mode term-mode ansi-term-mode treemacs-mode)
   "Major modes in which to disable line numbers."
   :group 'display-line-numbers
   :type 'list
