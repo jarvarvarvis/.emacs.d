@@ -13,12 +13,13 @@
 (package-initialize)
 
 ; Install use-package for easier package configuration
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
 (eval-and-compile
-  (setq use-package-always-ensure t
- 	use-package-expand-minimally t))
+  (unless (package-installed-p 'use-package)
+    (package-refresh-contents)
+    (package-install 'use-package))
+  (require 'use-package)
+  (require 'use-package-ensure)
+  (setq use-package-always-ensure t))
 
 
 ;;; Package list + configuration
@@ -56,7 +57,6 @@
 ; Autocompletion
 (use-package company
   :config
-  (require 'company)
   (setq company-idle-delay 0.0
 	company-minimum-prefix-length 1))
 
@@ -104,7 +104,6 @@
 
   :config
   ; Rebind the lsp-mode keymap prefix to C-c l
-  (require 'lsp-mode)
   (define-key lsp-mode-map (kbd "C-c l") lsp-command-map)
 
   ; Variables
