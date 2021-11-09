@@ -6,26 +6,34 @@
 
 ;;; Setup
 
+; Disable automatic loading of packages after the init file
+(setq package-enable-at-startup nil)
+
+; Load them explicitly instead
+(package-initialize)
+
+; Refresh package descriptions
+(unless package-archive-contents
+  (package-refresh-contents))
+
 ; Setup package repositories
 (require 'package)
 (add-to-list 'package-archives '("gnu"   . "https://elpa.gnu.org/packages/") t)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-(package-initialize)
 
 ; Install use-package for easier package configuration
 (eval-and-compile
   (unless (package-installed-p 'use-package)
     (package-refresh-contents)
     (package-install 'use-package))
-  (require 'use-package)
-  (require 'use-package-ensure)
-  (setq use-package-always-ensure t))
+  (require 'use-package))
 
 
 ;;; Package list + configuration
 
 ; Themes
 (use-package doom-themes
+  :ensure t
   :config
   ; Enable bold and italic styles for doom-themes themes
   (setq doom-themes-enable-bold t
@@ -38,10 +46,12 @@
   ; Corrects (and improves) org-mode's native fontification
   (doom-themes-org-config))
 
-(use-package all-the-icons)
+(use-package all-the-icons
+  :ensure t)
 
 ; UI
 (use-package treemacs
+  :ensure t
   :config
   ; Configure treemacs for use with doom-themes
   (doom-themes-treemacs-config)
@@ -50,21 +60,25 @@
   (treemacs))
 
 (use-package doom-modeline
+  :ensure t
   :config
   ; Enable the doom-modeline
   (doom-modeline-mode t))
 
 ; Autocompletion
 (use-package company
+  :ensure t
   :config
   (setq company-idle-delay 0.0
 	company-minimum-prefix-length 1))
 
 (use-package company-box
+  :ensure t
   :init
   (add-hook 'company-mode #'company-box-mode))
 
 (use-package helm
+  :ensure t
   :config
   ; Enable helm-mode (nicer menus)
   (helm-mode)
@@ -77,22 +91,30 @@
 )
 
 ; Programming languages + editor integration
-(use-package rust-mode)
+(use-package rust-mode
+  :ensure t)
 
 (use-package haskell-mode
+  :ensure t
   :hook
   (haskell-mode . interactive-haskell-mode)
   (haskell-mode . haskell-doc-mode))
 
-(use-package cmake-mode)
+(use-package php-mode
+  :ensure t)
+
+(use-package cmake-mode
+  :ensure t)
 
 (use-package editorconfig
+  :ensure t
   :config
   ; Enable editorconfig-mode (EditorConfig homepage: https://editorconfig.org/)
   (editorconfig-mode t))
 
 ; LSP
 (use-package lsp-mode
+  :ensure t
   :init
   (setq lsp-keymap-prefix "C-c l")
 
@@ -111,28 +133,40 @@
 
   :commands lsp)
 
-(use-package lsp-ui :commands lsp-ui-mode)
+(use-package lsp-ui
+  :ensure t
+  :commands lsp-ui-mode)
 
-(use-package lsp-treemacs :commands lsp-treemacs-errors-list)
+(use-package lsp-treemacs
+  :ensure t
+  :commands lsp-treemacs-errors-list)
 
-(use-package helm-lsp :commands helm-lsp-workspace-symbol)
+(use-package helm-lsp
+  :ensure t
+  :commands helm-lsp-workspace-symbol)
 
 ; Linting / Syntax checking
-(use-package flycheck)
+(use-package flycheck
+  :ensure t)
 
-(use-package flycheck-rust)
+(use-package flycheck-rust
+  :ensure t)
 
 ; Keybinds
-(use-package hydra)
+(use-package hydra
+  :ensure t)
 
 (use-package which-key
+  :ensure t
   :config
   (which-key-mode))
 
 ; Project navigation
-(use-package projectile)
+(use-package projectile
+  :ensure t)
 
-(use-package helm-xref)
+(use-package helm-xref
+  :ensure t)
 
 
 ;;;;; Appearance ;;;;;
@@ -151,7 +185,7 @@
 ; Disable the toolbar
 (tool-bar-mode -1)
 
-; Set visible-bell instead of an audible bell
+; Try to flash the frame to represent a bell
 (setq visible-bell 1)
 
 
@@ -168,7 +202,10 @@
 
 ; Define some modes in which line numbers should not be displayed
 (defcustom display-line-numbers-exempt-modes
-  '(shell-mode term-mode ansi-term-mode treemacs-mode)
+  '(shell-mode
+    term-mode
+    ansi-term-mode
+    treemacs-mode)
   "Major modes in which to disable line numbers."
   :group 'display-line-numbers
   :type 'list
@@ -206,6 +243,7 @@
   "Add rust-electric-pairs to the electric-pair-pairs list."
   (setq electric-pair-pairs (append electric-pair-pairs rust-electric-pairs)))
 
+; Hooks
 (add-hook 'rust-mode-hook #'rust-add-electric-pairs)
 
 ; Rebind C-x C-b to open ibuffer instead of buffer-list
@@ -227,9 +265,9 @@
   ("j" ace-window)                ; Jump
   ("d" ace-delete-window)         ; Delete a window (the buffer is kept)
   ("k" kill-buffer-and-window)    ; Kill the current buffer and window
-  ("s" ace-swap-window)           ; Swap
-  ("v" split-window-vertically)   ; Vertical split
-  ("h" split-window-horizontally) ; Horizontal split
+  ("s" ace-swap-window)           ; Swap windows
+  ("v" split-window-vertically)   ; Vertical window split
+  ("h" split-window-horizontally) ; Horizontal window split
   ("t" treemacs)                  ; toggle Treemacs
 )
 
@@ -262,7 +300,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(haskell-mode cmake-mode doom-themes all-the-icons treemacs doom-modeline company company-box helm rust-mode editorconfig lsp-mode lsp-ui lsp-treemacs helm-lsp flycheck flycheck-rust hydra which-key projectile helm-xref)))
+   '(php-mode haskell-mode cmake-mode doom-themes all-the-icons treemacs doom-modeline company company-box helm rust-mode editorconfig lsp-mode lsp-ui lsp-treemacs helm-lsp flycheck flycheck-rust hydra which-key projectile helm-xref)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
