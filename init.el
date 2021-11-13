@@ -65,6 +65,36 @@
   ; Enable the doom-modeline
   (doom-modeline-mode t))
 
+(use-package dashboard
+  :ensure t
+  :init
+  (add-hook 'after-init-hook 'dashboard-refresh-buffer)
+  :config
+  ; Dashboard items
+  (setq dashboard-items '((recents . 5)
+			  (projects . 5)))
+
+  ; Change the banner logo title
+  (setq dashboard-banner-logo-title "Welcome to Emacs")
+
+  ; Nicer banner
+  (setq dashboard-startup-banner 'logo)
+
+  ; Center the dashboard contents
+  (setq dashboard-center-content t)
+
+  ; Icons
+  (setq dashboard-set-heading-icons t)
+  (setq dashboard-set-file-icons t)
+
+  ; Add the dashboard startup hook
+  (dashboard-setup-startup-hook)
+
+  ; Add a custom startup hook that just delete
+  ; all others windows after the dashboard was intialized.
+  (add-hook 'emacs-startup-hook (lambda ()
+				  (delete-other-windows))))
+
 ; Autocompletion
 (use-package company
   :ensure t
@@ -163,18 +193,26 @@
 
 ; Project navigation
 (use-package projectile
-  :ensure t)
+  :ensure t
+  :config
+  (projectile-mode)
+  (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
 
 (use-package helm-xref
   :ensure t)
+
+; Version Control
+(use-package magit
+  :ensure t
+  :config
+  (global-set-key (kbd "C-c d") 'magit-status)
+  (global-set-key (kbd "C-c g") 'magit-dispatch)
+  (global-set-key (kbd "C-c M-g") 'magit-file-dispatch))
 
 
 ;;;;; Appearance ;;;;;
 
 ;;; Window options
-
-; Don't show the startup screen
-(setq inhibit-startup-screen t)
 
 ; Disable the Menu Bar
 (menu-bar-mode -1)
@@ -299,6 +337,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(auth-source-save-behavior nil)
  '(package-selected-packages
    '(php-mode haskell-mode cmake-mode doom-themes all-the-icons treemacs doom-modeline company company-box helm rust-mode editorconfig lsp-mode lsp-ui lsp-treemacs helm-lsp flycheck flycheck-rust hydra which-key projectile helm-xref)))
 (custom-set-faces
