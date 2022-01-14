@@ -46,7 +46,7 @@
   ; - doom-material
   ; - doom-spacegrey
   ; - doom-tomorrow-night
-  (load-theme 'doom-horizon t)
+  (load-theme 'doom-tomorrow-night t)
 
   ; Corrects (and improves) org-mode's native fontification
   (doom-themes-org-config))
