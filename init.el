@@ -41,7 +41,12 @@
 
   ; Load the theme (doom-one)
   ; Keep in mind that each theme might have their own settings.
-  (load-theme 'doom-one t)
+  ; Possible alternatives:
+  ; - doom-horizon
+  ; - doom-material
+  ; - doom-spacegrey
+  ; - doom-tomorrow-night
+  (load-theme 'doom-horizon t)
 
   ; Corrects (and improves) org-mode's native fontification
   (doom-themes-org-config))
