@@ -235,6 +235,12 @@
 ; Try to flash the frame to represent a bell
 (setq visible-bell 1)
 
+;;; Fonts
+
+; Set default font to Droid Sans Mono with size 12
+(defvar custom-font-face "Droid Sans Mono-12")
+
+
 
 ;;;;; Features ;;;;;
 
