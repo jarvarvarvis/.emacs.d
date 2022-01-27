@@ -245,11 +245,19 @@
 ;;; Fonts
 
 ; Set default font to Droid Sans Mono with size 12
-(defvar custom-font-face "Droid Sans Mono-12")
+; (defvar custom-font-face "Droid Sans Mono-12")
 
 
 
 ;;;;; Features ;;;;;
+
+;;; Backup files
+
+; Create backup / auto save files in /tmp/ instead of the current directory
+(setq backup-directory-alist
+	`((".*" . ,temporary-file-directory)))
+(setq auto-save-file-name-transforms
+	`((".*" ,temporary-file-directory t)))
 
 ;;; Modes
 
