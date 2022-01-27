@@ -235,6 +235,12 @@
 ; Try to flash the frame to represent a bell
 (setq visible-bell 1)
 
+;;; Transparency
+
+; Set transparency of the frame to 99% (active and inactive)
+(set-frame-parameter (selected-frame) 'alpha '(98 . 98))
+(add-to-list 'default-frame-alist '(alpha . (98 . 98)))
+
 ;;; Fonts
 
 ; Set default font to Droid Sans Mono with size 12
