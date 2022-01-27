@@ -160,6 +160,7 @@
   (c-mode . lsp)
   (c++-mode . lsp)
   (rust-mode . lsp)
+  (python-mode . lsp)
   (cmake-mode . lsp)
   (lsp-mode . lsp-enable-which-key-integration)
 
