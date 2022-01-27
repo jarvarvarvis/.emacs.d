@@ -173,6 +173,14 @@
 
 	:commands lsp)
 
+(use-package lsp-jedi
+	:ensure t
+	:config
+	(with-eval-after-load "lsp-mode"
+		(add-to-list 'lsp-disabled-clients 'pyls) ;; Don't use the PyLS language server in lsp-mode
+		(add-to-list 'lsp-enabled-clients 'jedi)  ;; Use Jedi instead.
+		))
+
 (use-package lsp-ui
 	:ensure t
 	:commands lsp-ui-mode)
@@ -363,17 +371,17 @@
     read-process-output-max (* 1024 1024))
 
 (custom-set-variables
-	;; custom-set-variables was added by Custom.
-	;; If you edit it by hand, you could mess it up, so be careful.
-	;; Your init file should contain only one such instance.
-	;; If there is more than one, they won't work right.
-	'(auth-source-save-behavior nil)
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(auth-source-save-behavior nil)
 	'(package-selected-packages
 		 '(glsl-mode php-mode haskell-mode cmake-mode doom-themes all-the-icons treemacs doom-modeline company company-box helm rust-mode editorconfig lsp-mode lsp-ui lsp-treemacs helm-lsp flycheck flycheck-rust hydra which-key projectile helm-xref)))
 (custom-set-faces
-	;; custom-set-faces was added by Custom.
-	;; If you edit it by hand, you could mess it up, so be careful.
-	;; Your init file should contain only one such instance.
-	;; If there is more than one, they won't work right.
-	)
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
 
