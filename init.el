@@ -178,7 +178,9 @@
 	:config
 	(with-eval-after-load "lsp-mode"
 		(add-to-list 'lsp-disabled-clients 'pyls) ;; Don't use the PyLS language server in lsp-mode
-		(add-to-list 'lsp-enabled-clients 'jedi)  ;; Use Jedi instead.
+		;; Temporary (?) solution: Add PyLS to the list of disabled LSP clients
+		;; PyLS won't get loaded, so Jedi can be loaded instead
+		;; (add-to-list 'lsp-enabled-clients 'jedi)  ;; Use Jedi instead.
 		))
 
 (use-package lsp-ui
