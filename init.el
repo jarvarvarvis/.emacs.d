@@ -233,6 +233,9 @@
 ;; Disable the toolbar
 (tool-bar-mode -1)
 
+;; Turn off file dialogs
+(setq use-file-dialog -1)
+
 ;; Try to flash the frame to represent a bell
 (setq visible-bell 1)
 
