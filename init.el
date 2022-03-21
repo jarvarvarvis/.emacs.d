@@ -242,9 +242,9 @@
 
 ;;; Transparency
 
-;; Set transparency of the frame to 99% (active and inactive)
-(set-frame-parameter (selected-frame) 'alpha '(98 . 98))
-(add-to-list 'default-frame-alist '(alpha . (98 . 98)))
+;; Set transparency of the frame to 90% (active and inactive)
+(set-frame-parameter (selected-frame) 'alpha '(90 . 90))
+(add-to-list 'default-frame-alist '(alpha . (90 . 90)))
 
 ;;; Fonts
 
