@@ -26,6 +26,10 @@
 	;; Enable editorconfig-mode (EditorConfig homepage: https://editorconfig.org/)
 	(editorconfig-mode t))
 
+(use-package smart-tab
+	:ensure t
+	:config
+	(global-smart-tab-mode t))
 
 (provide 'pkgs-code)
 ;;; pkgs-code.el ends here
