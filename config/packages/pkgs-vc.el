@@ -11,8 +11,8 @@
 
 	;;; Refresh Treemacs after a commit to show changed files.
 	(require 'treemacs)
-	(add-hook 'git-commit-setup-hook (lambda ()
-					 (treemacs-refresh))))
+	(add-hook 'git-commit-post-finish-hook (lambda ()
+						  (treemacs-refresh))))
 
 
 (provide 'pkgs-vc)
