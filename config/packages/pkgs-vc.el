@@ -7,13 +7,11 @@
 	:config
 	(global-set-key (kbd "C-c d") 'magit-status)
 	(global-set-key (kbd "C-c g") 'magit-dispatch)
-	(global-set-key (kbd "C-c M-g") 'magit-file-dispatch)
+	(global-set-key (kbd "C-c M-g") 'magit-file-dispatch))
 
-	;;; Refresh Treemacs after a commit to show changed files.
-	(require 'treemacs)
-	(add-hook 'git-commit-post-finish-hook (lambda ()
-						  (treemacs-refresh))))
-
+;;; Inform treemacs about (un)staging of files and commits happening with magit
+(use-package treemacs-magit
+	:ensure t)
 
 (provide 'pkgs-vc)
 ;;; pkgs-vc.el ends here
