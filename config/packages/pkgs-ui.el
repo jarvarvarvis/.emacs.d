@@ -28,7 +28,7 @@
 	:config
 	;; Dashboard items
 	(setq dashboard-items '((recents . 5)
-				       (projects . 5)))
+			        (projects . 5)))
 
 	;; Change the banner logo title
 	(setq dashboard-banner-logo-title "Welcome to Emacs")
@@ -46,10 +46,15 @@
 	;; Add the dashboard startup hook
 	(dashboard-setup-startup-hook)
 
-	;; Add a custom startup hook that just delete
+	;; Add a custom startup hook that just deletes
 	;; all others windows after the dashboard was intialized.
 	(add-hook 'emacs-startup-hook (lambda ()
 					      (delete-other-windows))))
+
+(use-package beacon
+	:ensure t
+	:config
+	(beacon-mode t))
 
 (provide 'pkgs-ui)
 ;;; pkgs-ui.el ends here
