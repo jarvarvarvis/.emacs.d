@@ -7,7 +7,13 @@
 	:config
 	(global-set-key (kbd "C-c d") 'magit-status)
 	(global-set-key (kbd "C-c g") 'magit-dispatch)
-	(global-set-key (kbd "C-c M-g") 'magit-file-dispatch))
+	(global-set-key (kbd "C-c M-g") 'magit-file-dispatch)
+
+	;;; Refresh Treemacs after a commit to show changed files.
+	(require 'treemacs)
+	(add-hook 'git-commit-setup-hook (lambda ()
+					 (treemacs-refresh))))
+
 
 (provide 'pkgs-vc)
 ;;; pkgs-vc.el ends here
