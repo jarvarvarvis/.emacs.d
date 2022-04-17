@@ -37,7 +37,7 @@
 	:ensure t
 	:config
 	(god-mode)
-	(global-set-key (kbd "C-i") 'god-mode))
+	(global-set-key (kbd "C-S-i") 'god-mode))
 
 (provide 'pkgs-keybinds)
 ;;; pkgs-keybinds.el ends here
