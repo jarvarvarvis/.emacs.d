@@ -1,20 +1,22 @@
 # Ignore some folders
+elpa/
 .cache/
 auto-save-list/
-elpa/
 transient/
+url/
 
+# Ignore all temporary files
+*\~
+
+# Ignore file for custom-set-variables
+emacs-custom.el
+
+# Miscallenous files
 network-security.data
 .lsp-session-*
 
 recentf
 \#recentf\#
 
-# Ignore all temporary files
-*\~
-
-/tramp
+tramp
 projectile-bookmarks.eld
-
-# Ignore file for custom-set-variables
-emacs-custom.el
