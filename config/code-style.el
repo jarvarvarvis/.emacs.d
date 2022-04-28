@@ -1,4 +1,4 @@
-;;; code-style.el -- Configuration related to code style -*- lexical-binding:t; -*-
+;;; code-style.el -- Configuration related to code style -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 
