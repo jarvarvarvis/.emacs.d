@@ -4,6 +4,7 @@
 
 (use-package treemacs
 	:ensure t
+	:after doom-themes
 	:config
 	;; Configure treemacs for use with doom-themes
 	
