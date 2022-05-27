@@ -2,7 +2,6 @@
 ;;; Commentary:
 ;;; Code:
 
-
 ;; Rebind C-x C-b to open ibuffer instead of buffer-list
 ;; Use this for managing (closing etc.) buffers
 (global-set-key (kbd "C-x C-b") 'ibuffer)
